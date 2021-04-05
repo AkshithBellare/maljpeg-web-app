@@ -151,5 +151,6 @@ class JPEG:
 def extract_features():
     img = JPEG("./server_files/saveimg.jpeg")
     data_list = img.decode()
-    df = pd.DataFrame(data_list,  columns = ["marker_EOI_content_after_num","marker_DQT_num","marker_DHT_num","file_markers_num", "marker_DQT_size_max", "marker_DHT_size_max","file_size", "marker_COM_size_max","marker_APP1_size_max","marker_APP12_size_max", "target"] )
-    df.to_csv("./dataset/test.csv", mode="w")
+    df = pd.DataFrame(data_list)
+    df = df.T
+    df.to_csv("test.csv")
