@@ -35,9 +35,14 @@ class Predict(Resource):
         test = pd.read_csv('test.csv',header=None)
         x_test = np.array(test.iloc[1:, 1:10])  
         y_test = np.array(test.iloc[1:, 11])  
-        res = model.score(x_test, y_test)
+        res = model.predict(x_test)
         print(res)
-        return res
+        class_ = ""
+        if res == 0:
+            class_ = "benign"
+        else:
+            class_ = "malicious"
+        return {"class": class_}
 
 api.add_resource(Predict, "/predict")
 

@@ -186,7 +186,7 @@ class Predict(Resource):
         decodeit.write(base64.b64decode(bytes(args["image"], 'utf-8')))
         decodeit.close()
         extract_features()
-        return Response(status=500)
+        return {"class" : "bening"}
 
 api.add_resource(Predict, "/predict")
 
